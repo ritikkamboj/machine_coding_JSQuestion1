@@ -9,7 +9,19 @@
     let selectedEmploye = employees[0];
 
     const empList = document.querySelector(".emps__names--list")
-    const empInfo = document.querySelector(".emps__singles--list")
+    const empInfo = document.querySelector(".emps__names--info")
+
+    empList.addEventListener("click", (e) => {
+        if (e.target.tagName === "SPAN" && selectedEmployeId !== e.target.id) {
+            selectedEmployeId = e.target.id
+
+            renderEmps();
+            renderSingleEmp();
+
+        }
+
+
+    })
 
 
     const renderEmps = () => {
@@ -32,6 +44,22 @@
 
     }
 
+    const renderSingleEmp = () => {
+        console.log(`${selectedEmploye.imageURL}`)
+        empInfo.innerHTML = `<img src="${selectedEmploye.imageURL}"/>
+        <span>${selectedEmploye.firstName} ${selectedEmploye.lastName} ${selectedEmploye.age}</span>
+        <span>${selectedEmploye.address}</span>
+        <span>${selectedEmploye.email}</span>
+        <span>${selectedEmploye.contactNo}</span>
+        <span>${selectedEmploye.DOB}</span>
+        
+        `
+
+    }
+
     renderEmps()
 
 })()
+
+
+
