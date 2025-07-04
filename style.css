@@ -107,3 +107,29 @@ body {
   align-items: center;
   justify-content: center;
 }
+.emp_form {
+  width: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.emp_form > div {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 20px;
+}
+.emp_form input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(236, 236, 236);
+}
+/* Hide arrows in number inputs for WebKit browsers */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
