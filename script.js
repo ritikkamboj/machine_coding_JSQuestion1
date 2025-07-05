@@ -12,6 +12,26 @@
     const empInfo = document.querySelector(".emps__names--info")
     const createButton = document.querySelector(".createEmp")
     const empTable = document.querySelector('.addEmploye')
+    const formSubmit = document.querySelector(".emp_form");
+
+
+    formSubmit.addEventListener("click", (e) => {
+        e.preventDefault()
+
+        let newPerson = {};
+
+        let data = new FormData(formSubmit);
+        console.log([...data.entries()])
+
+        for (let [key, value] of data.entries()) {
+            // console.log(key, value)
+            newPerson[key] = value;
+        }
+
+        newPerson.id = (employees[employees.length - 1]).id + 1
+
+        console.log(newPerson)
+    })
 
     createButton.addEventListener("click", () => {
         empTable.style.display = "flex"
