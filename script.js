@@ -30,7 +30,20 @@
 
         newPerson.id = (employees[employees.length - 1]).id + 1
 
+        newPerson.image = newPerson.image || "https://randomuser.me/api/portraits/women/4.jpg"
+
+        employees.push(newPerson)
+
         console.log(newPerson)
+
+
+
+        formSubmit.reset();
+        empTable.style.display = "none";
+
+        renderEmps()
+
+
     })
 
     createButton.addEventListener("click", () => {
