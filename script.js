@@ -10,6 +10,26 @@
 
     const empList = document.querySelector(".emps__names--list")
     const empInfo = document.querySelector(".emps__names--info")
+    const createButton = document.querySelector(".createEmp")
+    const empTable = document.querySelector('.addEmploye')
+
+    createButton.addEventListener("click", () => {
+        empTable.style.display = "flex"
+
+    })
+
+    empTable.addEventListener("click", (e) => {
+        if (e.target.className === "addEmploye"
+        ) {
+            empTable.style.display = "none";
+        }
+
+    })
+    // extra safety to stop event Propogation 
+    document.querySelector(".emp_form").addEventListener("click", (e) => {
+        e.stopPropagation();
+
+    })
 
 
     renderSingleEmp();
