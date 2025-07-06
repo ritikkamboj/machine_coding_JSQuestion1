@@ -15,13 +15,14 @@
     const formSubmit = document.querySelector(".emp_form");
 
 
-    formSubmit.addEventListener("click", (e) => {
+    formSubmit.addEventListener("submit", (e) => {
         e.preventDefault()
+        e.stopPropagation();
 
         let newPerson = {};
 
         let data = new FormData(formSubmit);
-        console.log([...data.entries()])
+        // console.log([...data.entries()])
 
         for (let [key, value] of data.entries()) {
             // console.log(key, value)
@@ -30,18 +31,23 @@
 
         newPerson.id = (employees[employees.length - 1]).id + 1
 
-        newPerson.image = newPerson.image || "https://randomuser.me/api/portraits/women/4.jpg"
-
-        employees.push(newPerson)
-
+        newPerson.imageURL = newPerson.imageURL || "https://randomuser.me/api/portraits/women/4.jpg"
         console.log(newPerson)
 
-
-
+        employees.push(newPerson)
+        renderEmps();
         formSubmit.reset();
         empTable.style.display = "none";
 
-        renderEmps()
+
+
+
+
+
+
+
+
+
 
 
     })
@@ -58,7 +64,7 @@
         }
 
     })
-    // extra safety to stop event Propogation 
+    // extra safety to stop event Propogation
     document.querySelector(".emp_form").addEventListener("click", (e) => {
         e.stopPropagation();
 
@@ -107,7 +113,7 @@
         <span class="name-heading">${selectedEmploye.firstName} ${selectedEmploye.lastName} ${selectedEmploye.age}</span>
         <span>${selectedEmploye.address}</span>
         <span>${selectedEmploye.email}</span>
-        <span>${selectedEmploye.contactNo}</span>
+        <span>${selectedEmploye.contactNumber}</span>
         <span>${selectedEmploye.DOB}</span>
         
         `
