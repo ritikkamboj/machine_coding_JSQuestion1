@@ -81,6 +81,18 @@
             renderSingleEmp();
 
         }
+        if (e.target.tagName === "I") {
+            console.log("clicked on cross")
+            employees = employees.filter((emp) => String(emp.id) !== e.target.parentNode.id);
+
+            if (String(selectedEmployeId) === e.target.parentNode.id) {
+                selectedEmployeId = employees[0]?.id || -1;
+                selectedEmploye = employees[0] || {};
+                renderSingleEmp()
+            }
+            renderEmps();
+
+        }
 
 
     })
@@ -108,6 +120,11 @@
     renderEmps();
 
     function renderSingleEmp() {
+
+        if (selectedEmployeId === -1) {
+            empInfo.innerHTML = ""
+            return;
+        }
         console.log(`${selectedEmploye.imageURL}`)
         empInfo.innerHTML = `<img src="${selectedEmploye.imageURL}"/>
         <span class="name-heading">${selectedEmploye.firstName} ${selectedEmploye.lastName} ${selectedEmploye.age}</span>
