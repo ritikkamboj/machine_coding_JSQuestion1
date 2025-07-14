@@ -13,6 +13,10 @@
     const createButton = document.querySelector(".createEmp")
     const empTable = document.querySelector('.addEmploye')
     const formSubmit = document.querySelector(".emp_form");
+    const dob = document.querySelector('.dob');
+
+    dob.max = `${new Date().getFullYear() - 18}-${new Date().toISOString().slice(5, 10)}`
+    console.log(dob.max)
 
 
     formSubmit.addEventListener("submit", (e) => {
@@ -32,23 +36,18 @@
         newPerson.id = (employees[employees.length - 1]).id + 1
 
         newPerson.imageURL = newPerson.imageURL || "https://randomuser.me/api/portraits/women/4.jpg"
+        console.log(typeof (dob.value))
+
+        newPerson.DOB = (`${new Date().getFullYear() - parseInt(dob.value.slice(0, 4))}`)
         console.log(newPerson)
+
+
+        // console.log(newPerson.age, typeof (newPerson.age))
 
         employees.push(newPerson)
         renderEmps();
         formSubmit.reset();
         empTable.style.display = "none";
-
-
-
-
-
-
-
-
-
-
-
 
     })
 
