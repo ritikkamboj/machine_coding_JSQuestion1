@@ -37,12 +37,12 @@
         formSubmit.lastName.value = selectedEmploye.lastName;
         formSubmit.email.value = selectedEmploye.email;
         formSubmit.address.value = selectedEmploye.address;
-        // formSubmit.contactNumber.value = +selectedEmploye.contactNo;
+        formSubmit.contactNumber.value = +selectedEmploye.contactNo;
         formSubmit.salary.value = selectedEmploye.salary
         formSubmit.imageUrl.value = selectedEmploye.imageURL;
-        // dob.value = `${new Date().getFullYear() - selectedEmploye.DOB}-01-01`; // rough conversion
+        dob.value = selectedEmploye.DOB; // rough conversion
 
-
+        console.log((selectedEmploye.contactNo))
 
 
         // console.log('jai baabe ki')
@@ -62,7 +62,6 @@
             newPerson[key] = value;
         }
 
-        newPerson.id = (employees[employees.length - 1]).id + 1
 
         newPerson.imageURL = newPerson.imageURL || "https://randomuser.me/api/portraits/women/4.jpg"
         console.log(typeof (dob.value))
@@ -78,11 +77,17 @@
             editId = null;
 
         }
+        else {
+            newPerson.id = (employees[employees.length - 1]).id + 1
+            employees.push(newPerson)
+
+
+
+        }
 
 
         // console.log(newPerson.age, typeof (newPerson.age))
 
-        employees.push(newPerson)
         renderEmps();
         formSubmit.reset();
         empTable.style.display = "none";
