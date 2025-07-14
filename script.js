@@ -70,6 +70,15 @@
         newPerson.DOB = (`${new Date().getFullYear() - parseInt(dob.value.slice(0, 4))}`)
         console.log(newPerson)
 
+        if (isEditing) {
+            let index = employees.findIndex(emp => emp.id === editId);
+            newPerson.id = editId;
+            employees[index] = newPerson;
+            isEditing = false;
+            editId = null;
+
+        }
+
 
         // console.log(newPerson.age, typeof (newPerson.age))
 
