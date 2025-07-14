@@ -14,11 +14,40 @@
     const empTable = document.querySelector('.addEmploye')
     const formSubmit = document.querySelector(".emp_form");
     const dob = document.querySelector('.dob');
+    const editEmploye = document.querySelector('.editEmploye');
 
     dob.max = `${new Date().getFullYear() - 18}-${new Date().toISOString().slice(5, 10)}`
     console.log(dob.max)
 
+    let isEditing = false;
+    let editId = null;
 
+
+    editEmploye.addEventListener("click", (e) => {
+        e.preventDefault();
+        // empTable.style.display = "flex";
+        empTable.style.display = "flex";
+        isEditing = true;
+        editId = selectedEmploye.id;
+        // console.log(editId, isEditing)
+        // console.log(formSubmit.firstName.value, 'yeh')
+
+        // Set form fields with selectedEmploye data
+        formSubmit.firstName.value = selectedEmploye.firstName;
+        formSubmit.lastName.value = selectedEmploye.lastName;
+        formSubmit.email.value = selectedEmploye.email;
+        formSubmit.address.value = selectedEmploye.address;
+        // formSubmit.contactNumber.value = +selectedEmploye.contactNo;
+        formSubmit.salary.value = selectedEmploye.salary
+        formSubmit.imageUrl.value = selectedEmploye.imageURL;
+        // dob.value = `${new Date().getFullYear() - selectedEmploye.DOB}-01-01`; // rough conversion
+
+
+
+
+        // console.log('jai baabe ki')
+
+    })
     formSubmit.addEventListener("submit", (e) => {
         e.preventDefault()
         e.stopPropagation();
@@ -129,7 +158,7 @@
         <span class="name-heading">${selectedEmploye.firstName} ${selectedEmploye.lastName} ${selectedEmploye.age}</span>
         <span>${selectedEmploye.address}</span>
         <span>${selectedEmploye.email}</span>
-        <span>${selectedEmploye.contactNumber}</span>
+        <span>${selectedEmploye.contactNo}</span>
         <span>${selectedEmploye.DOB}</span>
         
         `
